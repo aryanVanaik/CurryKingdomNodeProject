@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= dish.name %> </title>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+    ></script>
+    <style>
+        
+        
+        body{
+          background-color: black;
+          color: whitesmoke;
+          color:#d9852b;
+          
+          
+        }
+        #s{
+          
+          font-size: 2rem;
+          
+        }
+        #s{
+         color:#d9852b ;
+        }
+        #ss{
+         color:#d9852b ;
+     
+        }
+        #sss{
+         color:#d9852b ;
+        }
+        #sa{
+         color:#d9852b ;
+        }
+       .text{
+           width: 40rem;
+           justify-self: left;
+            
+       }
+        
+       img{
+           margin-top: 2em;
+           height: 80vh;
+           width:50vw ;
+       }
+       article{
+           margin: 5rem;
+           font-size:1.2em;
+           display: flex;
+           justify-content: space-between;
+
+           
+           
+           
+       }
+       .buttons:hover{
+           background-color:#a37036;
+         
+           
+
+       }
+       .button:hover{
+           background-color: rgb(155, 43, 43);
+       }
+       .buttons{
+           padding: 2em;
+           margin-right: 3em;
+           
+       }
+       .button{
+           padding: 2em;
+       }
+       h1{
+           text-align: center;
+           margin: 2rem;
+       }
+       .des{
+           text-align: center;
+       }
+
+       
+       
+        
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" id="s" href="">CurryKingdom</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" id="sa" aria-current="page" href="http://localhost:3000/menu">Home</a>
+              <a class="nav-link" id="ss" href="http://localhost:3000/menu/add">Add a Dish</a>
+              
+              
+            </div>
+          </div>
+        </div>
+    </nav>
+    
+    <h1><%= dish.name %> </h1>
+
+    <main class="text-center">
+        <img src="<%= dish.img %> " >
+    </main>
+    <article>
+        <div class="des">
+            <h2>Description </h2>
+            <p class="text" class="h1"><%= dish.description %></p>
+            <h2>Price</h2>
+            <h3>$<%= dish.price %> </h3>
+        </div>
+        
+
+        <div >
+            <button type="button" class="btn btn-outline-warning buttons" data-mdb-ripple-color="dark">Add to cart</button>
+            <form action="/menu/<%= dish._id%>?_method=DELETE" method="POST">
+                <button  class="btn btn-outline-danger button" data-mdb-ripple-color="dark">Delete Item</button>
+                <!-- this submits a request to delete the item -->
+            </form>
+            <button type="button" class="btn btn-outline-warning buttons" data-mdb-ripple-color="dark" onclick="window.location.href='/menu/<%= dish._id%>/edit'">Edit</button>
+            
+            
+            
+            
+        </div>
+    </article>
+    
+</body>
+</html>

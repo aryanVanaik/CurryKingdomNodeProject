@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+    ></script>
+    
+
+    <title><%= category %>  Menu</title>
+    <style>
+        body{
+          font-size: 1rem;
+            
+         }
+        img{
+          height:95vh;
+
+          
+        }
+        body{
+          background-color: black;
+          
+          color:#d9852b
+          
+        }
+        #s{
+          color:#d9852b;
+          font-size: 2rem;
+          
+        }
+        #s{
+         color:#d9852b ;
+        }
+        #ss{
+         color:#d9852b ;
+     
+        }
+        #sss{
+         color:#d9852b ;
+        }
+        #sa{
+         color:#d9852b ;
+        }
+        .img{
+          height:30vh;
+          width:20vw;
+        }
+        a, a:hover, a:focus, a:active {
+          text-decoration: none;
+          color: inherit;
+        }
+        
+        
+        
+       </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" id="s" href="#">CurryKingdom</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              
+              <a class="nav-link" id="ss" href="http://localhost:3000/menu/add">Add a dish</a>
+              <a class="nav-link" id="sss" href="/menu?category=entree ">Entrees</a>
+              <% if(category !== 'All'){  %> 
+              <a class="nav-link" id="sss" href="/menu">Whole Menu</a>
+              <%}  %>
+              <a class="nav-link" id="sss" href="/menu?category=mains ">Mains</a>
+              <a class="nav-link" id="sss" href="/menu?category=desertdrinks ">Drinks & Desert</a>  
+              <form action="/logout" method="POST">
+                <button  class="btn btn-outline-danger button" data-mdb-ripple-color="dark">Logout</button>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+
+    <!-- Carousel wrapper -->
+    <div
+    id="carouselBasicExample"
+    class="carousel slide carousel-fade"
+    data-mdb-ride="carousel"
+    >
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+    <button
+        type="button"
+        data-mdb-target="#carouselBasicExample"
+        data-mdb-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+    ></button>
+    <button
+        type="button"
+        data-mdb-target="#carouselBasicExample"
+        data-mdb-slide-to="1"
+        aria-label="Slide 2"
+    ></button>
+    <button
+        type="button"
+        data-mdb-target="#carouselBasicExample"
+        data-mdb-slide-to="2"
+        aria-label="Slide 3"
+    ></button>
+    </div>
+
+    <!-- Inner -->
+    <div class="carousel-inner">
+    <!-- Single item -->
+    <div class="carousel-item active">
+        <img
+        src="<%= menu[0].img %> "
+        class="d-block w-100"
+        alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+        <h5><%= menu[0].name %> </h5>
+        
+        </div>
+    </div>
+
+    <% for(var i = 1; i < 3; i++){ %>
+        <div class="carousel-item">
+            <img
+            src="<%= menu[i].img %> "
+            class="d-block w-100"
+            alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+            <h5><%= menu[i].name %> </h5>
+            
+            </div>
+            <!-- loop that loops over the database and takes the first 2 images of the item to be used in the carousel -->
+        </div>
+        
+        
+
+        <% } %> 
+
+    
+
+    
+    </div>
+    <!-- Inner -->
+
+    <!-- Controls -->
+    <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="prev"
+    >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="next"
+    >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Carousel wrapper -->
+  <div class="container">
+
+    <h1><%= category %>  Dishes</h1>
+    <div class="row item">
+      <%for(let m of menu){ %>
+        <div class="col-md-4">
+          <a href="/menu/<%= m._id %> ">
+            <img src="<%= m.img %> " class="img">
+            <p>Name: <%= m.name %> </p>
+            <p>Price: $<%= m.price %></p>
+          </a>
+          <!-- this loops over the database and displays the image name and price of the item -->
+          
+        </div>
+      <% } %>
+      
+      
+      
+    </div> 
+    
+  </div>
+  
+  
+  
+
+
+
+
+
+
+
+</body>
+</html>
